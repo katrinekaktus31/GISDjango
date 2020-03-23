@@ -23,5 +23,6 @@ from django.urls import include
 urlpatterns = [
     url(r'admin/', admin.site.urls),
     url(r"^", include("gis.urls")),
+    # refer link for url file in directory gis
 
 ]
