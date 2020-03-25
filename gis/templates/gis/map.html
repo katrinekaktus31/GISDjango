@@ -1,0 +1,43 @@
+{% extends "gis/base.html" %}
+
+{% block title %}
+    Map
+{% endblock %}
+
+
+{% block maphead %}
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+      html, body, #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+      <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css">
+      <script src="https://js.arcgis.com/4.14/"></script>
+      <script>
+  require([
+      "esri/Map",
+      "esri/views/MapView",
+      
+    ], function(Map, MapView) {
+
+    var map = new Map({
+      basemap: "topo-vector"
+    });
+
+    var view = new MapView({
+      container: "viewDiv",
+      map: map,
+      center: [-118.80500, 34.02700], // longitude, latitude
+      zoom: 13
+    });
+  });
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div id="viewDiv" style="height: 600px !important;"></div>
+{% endblock %}
